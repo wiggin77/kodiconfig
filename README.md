@@ -1,3 +1,3 @@
 # KodiConfig
 
-Ansible scripts to configure Kodi running on local ODroids.  
+Ansible scripts to configure LibreElec and Kodi running on local ODroids.  
