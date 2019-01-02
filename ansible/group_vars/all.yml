@@ -1,0 +1,21 @@
+# Vars for all groups.
+
+ansible_connection: ssh
+ansible_port: 22
+ansible_user: root
+ansible_ssh_pass: libreelec
+
+nas: 192.168.1.54
+drobo: 192.168.1.14
+
+config_dir: /storage/.config
+kodi_dir: /storage/.kodi
+cache_dir: /storage/.cache
+
+nas_movies: "{{ nas }}:/exports/Movies"
+nas_series: "{{ nas }}:/exports/Series"
+
+drobo_movies: "{{ drobo }}:/mnt/DroboFS/Shares/Public/Movies"
+drobo_series: "{{ drobo }}:/mnt/DroboFS/Shares/Public/Series"
+drobo_pictures: "{{ drobo }}:/mnt/DroboFS/Shares/Public/Pictures"
+drobo_music: "{{ drobo }}:/mnt/DroboFS/Shares/Public/Music"

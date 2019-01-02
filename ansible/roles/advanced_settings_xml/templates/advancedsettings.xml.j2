@@ -1,0 +1,30 @@
+<advancedsettings>
+
+  <video>
+    <excludefromscan>
+      <regexp>-trailer</regexp>
+      <regexp>[!-._ \\/]sample[-._ \\/]</regexp>
+      <regexp>[!-._ \\/]EXTRAS[-._ \\/]</regexp>
+    </excludefromscan>
+  </video>
+
+  <videodatabase>
+    <type>mysql</type>
+    <host>{{ nas }}</host>
+    <port>3306</port>
+    <user>kodi</user>
+    <pass>kodi</pass>
+  </videodatabase> 
+  <musicdatabase>
+    <type>mysql</type>
+    <host>{{ nas }}</host>
+    <port>3306</port>
+    <user>kodi</user>
+    <pass>kodi</pass>
+  </musicdatabase>
+  <videolibrary>
+    <importwatchedstate>true</importwatchedstate>
+    <importresumepoint>true</importresumepoint>
+  </videolibrary>
+
+</advancedsettings>

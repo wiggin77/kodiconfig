@@ -1,0 +1,6 @@
+.venv
+*.retry
+secrets.yml
+secrets.yaml
+doug_test*.yml
+

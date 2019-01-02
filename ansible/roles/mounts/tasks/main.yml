@@ -1,0 +1,29 @@
+# Set up mount points.
+
+- name: create mounts
+  template:
+    src: mount.j2
+    dest: "{{ config_dir }}/system.d/storage-{{ item.name }}.mount"
+    follow: yes
+  loop:
+    - { name: "nas_movies", desc: "Movies on NAS", what: "{{ nas_movies }}"}
+    - { name: "nas_series", desc: "Series on NAS", what: "{{ nas_series }}"}
+    - { name: "drobo_movies", desc: "Movies on Drobo", what: "{{ drobo_movies }}"}
+    - { name: "drobo_series", desc: "Series on Drobo", what: "{{ drobo_series }}"}
+    - { name: "drobo_pictures", desc: "Pictures on Drobo", what: "{{ drobo_pictures }}"}
+    - { name: "drobo_music", desc: "Music on Drobo", what: "{{ drobo_music }}"}
+
+- name: create symlinks
+  file:
+    src: "{{ config_dir }}/system.d/storage-{{ item }}.mount"
+    dest: "{{ config_dir }}/system.d/multi-user.target.wants/storage-{{ item }}.mount"
+    state: link
+  loop:
+    - nas_movies
+    - nas_series 
+    - drobo_movies
+    - drobo_series
+    - drobo_pictures
+    - drobo_music
+
+    

@@ -1,0 +1,7 @@
+# Create sources file
+
+- name: Create sources file
+  template:
+    src: sources.xml.j2
+    dest: "{{ kodi_dir }}/sources.xml"
+    follow: yes

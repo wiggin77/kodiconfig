@@ -1,0 +1,13 @@
+#
+# Configure everything
+#
+- hosts: all
+  roles:
+    - mounts 
+    - hosts_conf
+    - advanced_settings_xml
+    - sources_xml
+  post_tasks:
+    - reboot
+
+    

@@ -1,0 +1,15 @@
+[Unit]
+Description={{ item.desc }}
+Requires=network-online.service
+After=network-online.service
+Before=kodi.service
+
+[Mount]
+# The share we want to mount
+What={{ item.what }}
+Where=/storage/{{ item.name }}
+Options=ro
+Type=nfs
+
+[Install]
+WantedBy=multi-user.target
