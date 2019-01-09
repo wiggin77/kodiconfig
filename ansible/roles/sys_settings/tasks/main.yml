@@ -1,0 +1,32 @@
+# Configure system settings
+
+- name: modify hosts file
+  template:
+    src: hosts.conf.j2
+    dest: "{{ config_dir }}/hosts.conf"
+    follow: yes
+
+- name: create hostname file
+  template:
+    src: hostname.j2
+    dest: "{{ cache_dir }}/hostname"
+    follow: yes
+
+- name: add NTP server pool
+  template:
+    src: settings.j2
+    dest: "{{ cache_dir }}/connman/settings"
+    follow: yes
+
+- name: setup network wait
+  template:
+    src: network_wait.j2
+    dest: "{{ cache_dir }}/libreelec/network_wait"
+    follow: yes
+
+- name: create .profile
+  template:
+    src: profile.j2
+    dest: "{{ home_dir }}/.profile"
+    follow: yes
+

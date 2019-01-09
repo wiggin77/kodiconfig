@@ -1,0 +1,4 @@
+# Reboot the LibreElec way
+
+- name: reboot
+  command: reboot

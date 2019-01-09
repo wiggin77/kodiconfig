@@ -1,0 +1,14 @@
+# Configure Kodi settings
+
+- name: Create advanced settings file
+  template:
+    src: advancedsettings.xml.j2
+    dest: "{{ kodi_dir }}/userdata/advancedsettings.xml"
+    follow: yes
+
+- name: Create sources file
+  template:
+    src: sources.xml.j2
+    dest: "{{ kodi_dir }}/userdata/sources.xml"
+    follow: yes
+

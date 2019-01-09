@@ -3,10 +3,7 @@
 #
 - hosts: all
   roles:
+    - sys_settings
     - mounts 
-    - hosts_conf
-    - advanced_settings_xml
-    - sources_xml
-  post_tasks:
-    - name: reboot
-      reboot:
+    - kodi_settings
+    - rebooty
