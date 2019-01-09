@@ -13,6 +13,11 @@
     - { name: "drobo_pictures", desc: "Pictures on Drobo", what: "{{ drobo_pictures }}"}
     - { name: "drobo_music", desc: "Music on Drobo", what: "{{ drobo_music }}"}
 
+- name: ensure directory [multi-user.target.wants]
+  file:
+    path: "{{ config_dir }}/system.d/multi-user.target.wants"
+    state: directory
+
 - name: create symlinks
   file:
     src: "{{ config_dir }}/system.d/storage-{{ item }}.mount"

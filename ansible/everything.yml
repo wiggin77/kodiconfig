@@ -8,6 +8,5 @@
     - advanced_settings_xml
     - sources_xml
   post_tasks:
-    - reboot
-
-    
+    - name: reboot
+      reboot:
