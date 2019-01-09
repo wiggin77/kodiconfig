@@ -6,6 +6,12 @@
     dest: "{{ kodi_dir }}/userdata/advancedsettings.xml"
     follow: yes
 
+- name: Create GUI settings file
+  template:
+    src: guisettings.xml.j2
+    dest: "{{ kodi_dir }}/userdata/guisettings.xml"
+    follow: yes
+
 - name: Create sources file
   template:
     src: sources.xml.j2
