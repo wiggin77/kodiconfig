@@ -1,34 +1,18 @@
 # Set up mount points.
 
 - name: create mounts
-  template:
-    src: mount.j2
-    dest: "{{ config_dir }}/system.d/storage-{{ item.name }}.mount"
-    follow: yes
+  mount:
+    path: "/media/{{ item.path }}"
+    src: "{{ item.src }}"
+    fstype: nfs4
+    backup: yes
+    state: mounted
+    opts: ro,_netdev,auto
   loop:
-    - { name: "nas_movies", desc: "Movies on NAS", what: "{{ nas_movies }}"}
-    - { name: "nas_series", desc: "Series on NAS", what: "{{ nas_series }}"}
-    - { name: "drobo_movies", desc: "Movies on Drobo", what: "{{ drobo_movies }}"}
-    - { name: "drobo_series", desc: "Series on Drobo", what: "{{ drobo_series }}"}
-    - { name: "drobo_pictures", desc: "Pictures on Drobo", what: "{{ drobo_pictures }}"}
-    - { name: "drobo_music", desc: "Music on Drobo", what: "{{ drobo_music }}"}
+    - { path: "nas_movies", desc: "Movies on NAS", src: "{{ nas_movies }}"}
+    - { path: "nas_series", desc: "Series on NAS", src: "{{ nas_series }}"}
+    - { path: "drobo_movies", desc: "Movies on Drobo", src: "{{ drobo_movies }}"}
+    - { path: "drobo_series", desc: "Series on Drobo", src: "{{ drobo_series }}"}
+    - { path: "drobo_pictures", desc: "Pictures on Drobo", src: "{{ drobo_pictures }}"}
+    - { path: "drobo_music", desc: "Music on Drobo", src: "{{ drobo_music }}"}
 
-- name: ensure directory [multi-user.target.wants]
-  file:
-    path: "{{ config_dir }}/system.d/multi-user.target.wants"
-    state: directory
-
-- name: create symlinks
-  file:
-    src: "{{ config_dir }}/system.d/storage-{{ item }}.mount"
-    dest: "{{ config_dir }}/system.d/multi-user.target.wants/storage-{{ item }}.mount"
-    state: link
-  loop:
-    - nas_movies
-    - nas_series 
-    - drobo_movies
-    - drobo_series
-    - drobo_pictures
-    - drobo_music
-
-    

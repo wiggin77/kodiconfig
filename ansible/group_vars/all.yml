@@ -2,16 +2,16 @@
 
 ansible_connection: ssh
 ansible_port: 22
-ansible_user: root
-ansible_ssh_pass: le
+ansible_user: odroid
+ansible_ssh_pass: odroid
+ansible_become: yes
+ansible_become_pass: "{{ ansible_ssh_pass }}"
 
 nas: 192.168.1.54
 drobo: 192.168.1.14
 
-home_dir: /storage
-config_dir: /storage/.config
-kodi_dir: /storage/.kodi
-cache_dir: /storage/.cache
+home_dir: /home/odroid
+kodi_userdata_dir: "{{ home_dir }}/.kodi/userdata"
 
 nas_movies: "{{ nas }}:/exports/Movies"
 nas_series: "{{ nas }}:/exports/Series"

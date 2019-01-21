@@ -1,0 +1,9 @@
+# Start Kodi -- needed to create .kodi directory
+
+- name: start Kodi 
+  shell: kodi
+  args:
+    chdir: "{{ home_dir }}"
+    creates: "{{ kodi_userdata_dir }}/profiles.xml"
+
+

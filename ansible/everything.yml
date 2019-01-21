@@ -3,6 +3,7 @@
 #
 - hosts: all
   roles:
+    - start_kodi
     - sys_settings
     - mounts 
     - kodi_settings

@@ -2,31 +2,37 @@
 
 - name: modify hosts file
   template:
-    src: hosts.conf.j2
-    dest: "{{ config_dir }}/hosts.conf"
+    src: hosts.j2
+    dest: "/etc/hosts"
     follow: yes
 
 - name: create hostname file
   template:
     src: hostname.j2
-    dest: "{{ cache_dir }}/hostname"
+    dest: "/etc/hostname"
     follow: yes
 
-- name: add NTP server pool
+- name: create bash aliases
   template:
-    src: settings.j2
-    dest: "{{ cache_dir }}/connman/settings"
+    src: bash_aliases.j2
+    dest: "{{ home_dir }}/.bash_aliases"
     follow: yes
+    group: "{{ ansible_user }}"
+    owner: "{{ ansible_user }}"
+    mode: "u=rw"
 
-- name: setup network wait
-  template:
-    src: network_wait.j2
-    dest: "{{ cache_dir }}/libreelec/network_wait"
-    follow: yes
 
-- name: create .profile
-  template:
-    src: profile.j2
-    dest: "{{ home_dir }}/.profile"
-    follow: yes
+#- name: update apt-get cache
+#  apt:
+#    force_apt_get: yes
+#    update_cache: yes
 
+- name: install packages
+  apt: 
+    force_apt_get: yes
+    name: "{{ item }}"
+    state: present
+  loop: 
+    - libnfs11 
+    - nfs-common
+    - zram-config
