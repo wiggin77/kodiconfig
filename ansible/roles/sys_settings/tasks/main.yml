@@ -18,11 +18,11 @@
     dest: "{{ cache_dir }}/connman/settings"
     follow: yes
 
-- name: setup network wait
-  template:
-    src: network_wait.j2
-    dest: "{{ cache_dir }}/libreelec/network_wait"
-    follow: yes
+#- name: setup network wait
+#  template:
+#    src: network_wait.j2
+#    dest: "{{ cache_dir }}/libreelec/network_wait"
+#    follow: yes
 
 - name: create .profile
   template:

@@ -5,16 +5,25 @@
     src: advancedsettings.xml.j2
     dest: "{{ kodi_dir }}/userdata/advancedsettings.xml"
     follow: yes
+    group: "{{ ansible_user }}"
+    owner: "{{ ansible_user }}"
+    mode: "u=rw,g=r,o=r"
 
-- name: Create GUI settings file
-  template:
-    src: guisettings.xml.j2
-    dest: "{{ kodi_dir }}/userdata/guisettings.xml"
-    follow: yes
+#- name: Create GUI settings file
+#  template:
+#    src: guisettings.xml.j2
+#    dest: "{{ kodi_dir }}/userdata/guisettings.xml"
+#    follow: yes
+#    group: "{{ ansible_user }}"
+#    owner: "{{ ansible_user }}"
+#    mode: "u=rw,g=r,o=r"
 
 - name: Create sources file
   template:
     src: sources.xml.j2
     dest: "{{ kodi_dir }}/userdata/sources.xml"
     follow: yes
+    group: "{{ ansible_user }}"
+    owner: "{{ ansible_user }}"
+    mode: "u=rw,g=r,o=r"
 
